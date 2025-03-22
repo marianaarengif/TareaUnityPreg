@@ -26,7 +26,7 @@ public class leerPreguntaAbierta : MonoBehaviour
        
     }
 
-    void LecturaPreguntasAbiertas()
+    void LecturaPreguntasAbiertas() //hola valentina
     {
         try
         {
