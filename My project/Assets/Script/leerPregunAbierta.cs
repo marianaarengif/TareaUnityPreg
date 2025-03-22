@@ -9,9 +9,8 @@ public class leerPreguntaAbierta : MonoBehaviour
 {
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
-   
-
-   
+    List<PreguntaAbierta> preguntasDisponibles;
+    PreguntaAbierta preguntaActual;
 
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
@@ -21,8 +20,10 @@ public class leerPreguntaAbierta : MonoBehaviour
     {
         listaPreguntasFaciles = new List<PreguntaAbierta>();
         listaPreguntasDificiles = new List<PreguntaAbierta>();
+        preguntasDisponibles = new List<PreguntaAbierta>();
+
         LecturaPreguntasAbiertas();
-       
+        mostrarPreguntasAbiertas();
     }
 
     void LecturaPreguntasAbiertas()
@@ -58,5 +59,33 @@ public class leerPreguntaAbierta : MonoBehaviour
             Debug.Log("ERROR!!!!! " + e.ToString());
         }
     }
+
+    public void mostrarPreguntasAbiertas()
+    {
+        if (preguntasDisponibles.Count == 0)
+        {
+            preguntasDisponibles.AddRange(listaPreguntasFaciles);
+        }
+
+        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
+        preguntaActual = preguntasDisponibles[index];
+        preguntasDisponibles.RemoveAt(index);
+
+        textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
+    }
+
+    public void mostrarRespuesta()
+    {
+        textRespuesta.text = preguntaActual.Respuesta;
+        panelRespuesta.SetActive(true);
+    }
+
+    public void siguientePregunta()
+    {
+        panelRespuesta.SetActive(false);
+        mostrarPreguntasAbiertas();
+    }
 }
+
+
 

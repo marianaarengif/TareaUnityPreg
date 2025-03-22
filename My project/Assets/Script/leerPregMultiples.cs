@@ -10,10 +10,10 @@ public class leerPregMultiples : MonoBehaviour
     string lineaLeida = "";
     List<PreguntaMultiple> listaPMF;
     List<PreguntaMultiple> listaPMD;
+    List<PreguntaMultiple> preguntasDisponibles;
+    PreguntaMultiple preguntaActual;
 
-
-
-
+    string respuestaPM;
 
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textResp1;
@@ -24,24 +24,21 @@ public class leerPregMultiples : MonoBehaviour
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
-    void Start() //prueba
+    void Start()
     {
         listaPMF = new List<PreguntaMultiple>();
         listaPMD = new List<PreguntaMultiple>();
+        preguntasDisponibles = new List<PreguntaMultiple>();
 
         LecturaPreguntasMultiples();
-
+        mostrarPreguntasMultiples();
     }
-
-
-
-
 
     public void LecturaPreguntasMultiples()
     {
         try
         {
-            StreamReader sr1 = new StreamReader("Assets/Script/PM/PreguntaMultiple.cs");
+            StreamReader sr1 = new StreamReader("Assets/Files/ArchivoPreguntasM.txt");
             while ((lineaLeida = sr1.ReadLine()) != null)
             {
                 string[] lineaPartida = lineaLeida.Split("-");
@@ -72,5 +69,45 @@ public class leerPregMultiples : MonoBehaviour
         {
             Debug.Log("ERROR!!!!! " + e.ToString());
         }
+    }
+
+    public void mostrarPreguntasMultiples()
+    {
+        if (preguntasDisponibles.Count == 0)
+        {
+            preguntasDisponibles.AddRange(listaPMF);
+        }
+
+        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
+        preguntaActual = preguntasDisponibles[index];
+        preguntasDisponibles.RemoveAt(index);
+
+        textPregunta.text = preguntaActual.Pregunta;
+        textResp1.text = preguntaActual.Respuesta1;
+        textResp2.text = preguntaActual.Respuesta2;
+        textResp3.text = preguntaActual.Respuesta3;
+        textResp4.text = preguntaActual.Respuesta4;
+        respuestaPM = preguntaActual.RespuestaCorrecta;
+    }
+
+    public void comprobarRespuesta(TextMeshProUGUI respuestaSeleccionada)
+    {
+        if (respuestaSeleccionada.text.Equals(respuestaPM))
+        {
+            panelCorrecto.SetActive(true);
+            panelIncorrecto.SetActive(false);
+        }
+        else
+        {
+            panelCorrecto.SetActive(false);
+            panelIncorrecto.SetActive(true);
+        }
+    }
+
+    public void siguientePregunta()
+    {
+        panelCorrecto.SetActive(false);
+        panelIncorrecto.SetActive(false);
+        mostrarPreguntasMultiples();
     }
 }
