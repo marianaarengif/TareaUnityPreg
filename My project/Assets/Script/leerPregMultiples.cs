@@ -24,7 +24,7 @@ public class leerPregMultiples : MonoBehaviour
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
-    void Start()
+    void Start() //prueba
     {
         listaPMF = new List<PreguntaMultiple>();
         listaPMD = new List<PreguntaMultiple>();
