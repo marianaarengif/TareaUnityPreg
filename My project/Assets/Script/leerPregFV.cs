@@ -2,104 +2,66 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Models;
 using TMPro;
-using models;
+using UnityEngine.UI;
 
 public class leerPregFV : MonoBehaviour
 {
-    string lineaLeida = "";
-    List<PreguntaMultiple> listaPreguntasMultiples;
-    List<PreguntaMultiple> preguntasDisponibles;
-    PreguntaMultiple preguntaActual;
+    List<preguntasFV> listaPFVF;
+    List<preguntasFV> listaPFVD;
 
-    string respuestaPM;
+
 
     public TextMeshProUGUI textPregunta;
-    public TextMeshProUGUI textResp1;
-    public TextMeshProUGUI textResp2;
-    public TextMeshProUGUI textResp3;
-    public TextMeshProUGUI textResp4;
-
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
-    void Start()
+
+    void Start() //para el cambio 
+
     {
-        listaPreguntasMultiples = new List<PreguntaMultiple>();
-        preguntasDisponibles = new List<PreguntaMultiple>();
-        LecturaPreguntasMultiples();
-        mostrarPreguntasMultiples();
+
+        listaPFVF = new List<preguntasFV>();
+        listaPFVD = new List<preguntasFV>();
+        LecturaPreguntasFV();
+
     }
 
-    public void mostrarPreguntasMultiples()
-    {
-        if (preguntasDisponibles.Count == 0)
-        {
-            preguntasDisponibles.AddRange(listaPreguntasMultiples);
-        }
 
-        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
-        preguntaActual = preguntasDisponibles[index];
-        preguntasDisponibles.RemoveAt(index);
 
-        textPregunta.text = preguntaActual.Pregunta;
-        textResp1.text = preguntaActual.Respuesta1;
-        textResp2.text = preguntaActual.Respuesta2;
-        textResp3.text = preguntaActual.Respuesta3;
-        textResp4.text = preguntaActual.Respuesta4;
-        respuestaPM = preguntaActual.RespuestaCorrecta;
-    }
-
-    public void comprobarRespuesta(TextMeshProUGUI respuestaSeleccionada)
-    {
-        if (respuestaSeleccionada.text.Equals(respuestaPM))
-        {
-            panelCorrecto.SetActive(true);
-            panelIncorrecto.SetActive(false);
-        }
-        else
-        {
-            panelCorrecto.SetActive(false);
-            panelIncorrecto.SetActive(true);
-        }
-    }
-
-    public void siguientePregunta()
-    {
-        panelCorrecto.SetActive(false);
-        panelIncorrecto.SetActive(false);
-        mostrarPreguntasMultiples();
-    }
-
-    public void LecturaPreguntasMultiples()
+    void LecturaPreguntasFV()
     {
         try
         {
-            StreamReader sr1 = new StreamReader("Assets/Files/ArchivoPreguntasM.txt");
-            while ((lineaLeida = sr1.ReadLine()) != null)
+            StreamReader sr = new StreamReader("Assets/Script/FV/preguntasFV.cs");
+            string lineaLeida;
+            while ((lineaLeida = sr.ReadLine()) != null)
             {
                 string[] lineaPartida = lineaLeida.Split("-");
                 string pregunta = lineaPartida[0];
-                string respuesta1 = lineaPartida[1];
-                string respuesta2 = lineaPartida[2];
-                string respuesta3 = lineaPartida[3];
-                string respuesta4 = lineaPartida[4];
-                string respuestaCorrecta = lineaPartida[5];
-                string versiculo = lineaPartida[6];
-                string dificultad = lineaPartida[7].Trim();
+                bool respuesta = bool.Parse(lineaPartida[1]);
+                string versiculo = lineaPartida[2];
+                string dificultad = lineaPartida[3].Trim();
 
+                preguntasFV objFV = new preguntasFV(pregunta, respuesta, versiculo, dificultad);
                 if (dificultad.ToLower() == "facil")
                 {
-                    PreguntaMultiple objPM = new PreguntaMultiple(pregunta, respuesta1, respuesta2, respuesta3, respuesta4, respuestaCorrecta, versiculo, dificultad);
-                    listaPreguntasMultiples.Add(objPM);
+                    listaPFVF.Add(objFV);
+                }
+                else if (dificultad.ToLower() == "dificil")
+                {
+                    listaPFVD.Add(objFV);
                 }
             }
-            sr1.Close();
-            Debug.Log("El tamaño de la lista es " + listaPreguntasMultiples.Count);
+            sr.Close();
+            Debug.Log("El tamaño de la lista de preguntas faciles es " + listaPFVF.Count);
+            Debug.Log("El tamaño de la lista de preguntas dificiles es " + listaPFVD.Count);
         }
         catch (Exception e)
         {
             Debug.Log("ERROR!!!!! " + e.ToString());
         }
     }
+
 }
