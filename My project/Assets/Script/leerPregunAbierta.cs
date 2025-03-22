@@ -15,6 +15,7 @@ public class leerPreguntaAbierta : MonoBehaviour
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
+    //hola
 
     void Start()
     {
