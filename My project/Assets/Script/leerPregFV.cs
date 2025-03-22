@@ -18,7 +18,7 @@ public class leerPregFV : MonoBehaviour
     public GameObject panelIncorrecto;
 
 
-    void Start() //para el cambio 22
+    void Start() //para el cambio 22 prueba 222
 
     {
 
