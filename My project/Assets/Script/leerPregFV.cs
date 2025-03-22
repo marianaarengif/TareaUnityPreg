@@ -10,12 +10,14 @@ public class leerPregFV : MonoBehaviour
 {
     List<preguntasFV> listaPFVF;
     List<preguntasFV> listaPFVD;
-
+    
+    
     public TextMeshProUGUI textPregunta;
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
-    void Start()
+    void Start() //para el cambio 
+
     {
 
 
@@ -26,7 +28,7 @@ public class leerPregFV : MonoBehaviour
 
     }
 
-  
+
     void LecturaPreguntasFV()
     {
         try
