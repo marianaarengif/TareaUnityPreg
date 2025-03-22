@@ -61,7 +61,7 @@ public class leerPreguntaAbierta : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasAbiertas()
+    public void mostrarPreguntasAbiertas() //para que le salga a valentina 
     {
         if (preguntasDisponibles.Count == 0)
         {
@@ -75,7 +75,7 @@ public class leerPreguntaAbierta : MonoBehaviour
         textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
     }
 
-    public void mostrarRespuesta()
+    public void mostrarRespuesta() //para que le salga a valentina
     {
         textRespuesta.text = preguntaActual.Respuesta;
         panelRespuesta.SetActive(true);
