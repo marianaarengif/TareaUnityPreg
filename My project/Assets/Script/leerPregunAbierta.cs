@@ -9,12 +9,9 @@ public class leerPreguntaAbierta : MonoBehaviour
 {
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
-    List<PreguntaAbierta> preguntasDisponibles;
-    PreguntaAbierta preguntaActual;
+   
 
-    int rondaActual = 1;
-    int preguntasRespondidas = 0;
-    const int preguntasPorRonda = 3;
+   
 
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
@@ -24,9 +21,8 @@ public class leerPreguntaAbierta : MonoBehaviour
     {
         listaPreguntasFaciles = new List<PreguntaAbierta>();
         listaPreguntasDificiles = new List<PreguntaAbierta>();
-        preguntasDisponibles = new List<PreguntaAbierta>();
         LecturaPreguntasAbiertas();
-        mostrarPreguntasAbiertas();
+       
     }
 
     void LecturaPreguntasAbiertas()
@@ -61,59 +57,6 @@ public class leerPreguntaAbierta : MonoBehaviour
         {
             Debug.Log("ERROR!!!!! " + e.ToString());
         }
-    }
-
-    public void mostrarPreguntasAbiertas()
-    {
-        if (preguntasRespondidas >= preguntasPorRonda)
-        {
-            if (rondaActual == 1)
-            {
-                rondaActual = 2;
-                preguntasRespondidas = 0;
-                preguntasDisponibles.Clear();
-                preguntasDisponibles.AddRange(listaPreguntasDificiles);
-            }
-            else
-            {
-                Debug.Log("No hay más preguntas disponibles.");
-                return;
-            }
-        }
-
-        if (preguntasDisponibles.Count == 0)
-        {
-            if (rondaActual == 1)
-            {
-                preguntasDisponibles.AddRange(listaPreguntasFaciles);
-            }
-            else
-            {
-                preguntasDisponibles.AddRange(listaPreguntasDificiles);
-            }
-        }
-
-        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
-        preguntaActual = preguntasDisponibles[index];
-        preguntasDisponibles.RemoveAt(index);
-
-        
-        textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
-
-        preguntasRespondidas++;
-    }
-
-    public void mostrarRespuesta()
-    {
-        
-        textRespuesta.text = preguntaActual.Respuesta;
-        panelRespuesta.SetActive(true);
-    }
-
-    public void siguientePregunta()
-    {
-        panelRespuesta.SetActive(false);
-        mostrarPreguntasAbiertas();
     }
 }
 
