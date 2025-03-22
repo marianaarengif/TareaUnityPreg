@@ -71,7 +71,7 @@ public class leerPregMultiples : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasMultiples()
+    public void mostrarPreguntasMultiples() //holaaa valentina
     {
         if (preguntasDisponibles.Count == 0)
         {

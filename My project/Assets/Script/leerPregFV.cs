@@ -67,7 +67,7 @@ public class leerPregFV : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasFV()
+    public void mostrarPreguntasFV()  //hola valentina 
     {
         if (preguntasDisponibles.Count == 0)
         {
