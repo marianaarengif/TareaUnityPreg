@@ -31,7 +31,7 @@ public class leerPregFV : MonoBehaviour
     {
         try
         {
-            StreamReader sr = new StreamReader("Assets/Files/preguntasFalso_Verdadero.txt");
+            StreamReader sr = new StreamReader("Assets/Script/FV/preguntasFV.cs");
             string lineaLeida;
             while ((lineaLeida = sr.ReadLine()) != null)
             {
