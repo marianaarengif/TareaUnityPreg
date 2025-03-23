@@ -67,8 +67,7 @@ public class leerPregFV : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasFV()  //hola valentina 
-    {
+    public void mostrarPreguntasFV()     {
         if (preguntasDisponibles.Count == 0)
         {
             if (rondaActual == 1)
@@ -85,7 +84,6 @@ public class leerPregFV : MonoBehaviour
         preguntaActual = preguntasDisponibles[index];
         preguntasDisponibles.RemoveAt(index);
 
-        // Mostrar la pregunta actual en la UI
         textPregunta.text = preguntaActual.PreguntaFV;
 
         preguntasRespondidas++;

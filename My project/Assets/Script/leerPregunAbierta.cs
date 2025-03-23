@@ -15,7 +15,7 @@ public class leerPreguntaAbierta : MonoBehaviour
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
-    //hola
+  
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class leerPreguntaAbierta : MonoBehaviour
         mostrarPreguntasAbiertas();
     }
 
-    void LecturaPreguntasAbiertas() //hola valentina
+    void LecturaPreguntasAbiertas()
     {
         try
         {
@@ -61,7 +61,7 @@ public class leerPreguntaAbierta : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasAbiertas() //para que le salga a valentina 
+    public void mostrarPreguntasAbiertas() 
     {
         if (preguntasDisponibles.Count == 0)
         {
@@ -75,7 +75,7 @@ public class leerPreguntaAbierta : MonoBehaviour
         textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
     }
 
-    public void mostrarRespuesta() //para que le salga a valentina
+    public void mostrarRespuesta()
     {
         textRespuesta.text = preguntaActual.Respuesta;
         panelRespuesta.SetActive(true);

@@ -216,7 +216,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &16591218
 MonoBehaviour:
@@ -1764,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &363522710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2272,6 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c69cba7cb9a294a88124a612a39f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListaDeControles: []
   panelPreguntasMultiples: {fileID: 363522709}
   panelPreguntasAbiertas: {fileID: 1169716336}
   panelFalsoVerdadero: {fileID: 1410709245}
@@ -4450,7 +4451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169716337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5001,7 +5002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1410709246
 RectTransform:
   m_ObjectHideFlags: 0
