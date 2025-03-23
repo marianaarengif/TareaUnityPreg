@@ -33,7 +33,7 @@ public class leerPregMultiples : MonoBehaviour
         LecturaPreguntasMultiples();
         mostrarPreguntasMultiples();
     }
-
+    //multiples
     public void LecturaPreguntasMultiples()
     {
         try
