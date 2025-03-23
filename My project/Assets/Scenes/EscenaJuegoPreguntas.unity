@@ -216,7 +216,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &16591218
 MonoBehaviour:
@@ -238,8 +238,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 69bd050aaef95384cb8f150dea8d88f1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1764,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &363522710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2193,9 +2193,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2069687123}
-        m_TargetAssemblyTypeName: leerPregFV, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2272,10 +2272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c69cba7cb9a294a88124a612a39f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListaDeControles: []
-  panelPreguntasMultiples: {fileID: 363522709}
-  panelPreguntasAbiertas: {fileID: 1169716336}
-  panelFalsoVerdadero: {fileID: 1410709245}
+  listaControllers:
+  - {fileID: 2069687120}
+  - {fileID: 1868737693}
+  - {fileID: 1756190236}
+  panelAbiertas: {fileID: 1169716336}
+  panelMultiples: {fileID: 363522709}
+  panelFV: {fileID: 1410709245}
   panelRonda2: {fileID: 668549611}
 --- !u!4 &594247088
 Transform:
@@ -2375,9 +2378,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1756190237}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2630,7 +2633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.36078432, g: 0.7490196, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2913,8 +2916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18, y: -86.881}
-  m_SizeDelta: {x: -1002.9, y: -281.84}
+  m_AnchoredPosition: {x: 12.289, y: -94.116}
+  m_SizeDelta: {x: -709.3, y: -267.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819963817
 MonoBehaviour:
@@ -4451,7 +4454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1169716337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4934,6 +4937,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1868737694}
         m_TargetAssemblyTypeName: leerPreguntaAbierta, Assembly-CSharp
         m_MethodName: siguientePregunta
@@ -5002,7 +5017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1410709246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5326,8 +5341,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 69bd050aaef95384cb8f150dea8d88f1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5695,9 +5710,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1756190237}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6444,9 +6459,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1868737694}
-        m_TargetAssemblyTypeName: leerPreguntaAbierta, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6476,8 +6491,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 69bd050aaef95384cb8f150dea8d88f1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7692,9 +7707,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2069687123}
-        m_TargetAssemblyTypeName: leerPregFV, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7825,9 +7840,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1756190237}
-        m_TargetAssemblyTypeName: leerPregMultiples, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8141,9 +8156,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2069687123}
-        m_TargetAssemblyTypeName: leerPregFV, Assembly-CSharp
-        m_MethodName: siguientePregunta
+      - m_Target: {fileID: 594247087}
+        m_TargetAssemblyTypeName: GameControllerTODO, Assembly-CSharp
+        m_MethodName: SelectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8173,8 +8188,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 69bd050aaef95384cb8f150dea8d88f1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

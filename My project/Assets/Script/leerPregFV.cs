@@ -8,10 +8,9 @@ using Models;
 
 public class leerPregFV : MonoBehaviour
 {
-    string lineaLeida = "";
     List<preguntasFV> listaPreguntasFaciles;
     List<preguntasFV> listaPreguntasDificiles;
-    List<preguntasFV> preguntasDisponibles;
+    public List<preguntasFV> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     preguntasFV preguntaActual;
 
     int rondaActual = 1;
@@ -110,4 +109,6 @@ public class leerPregFV : MonoBehaviour
         mostrarPreguntasFV();
     }
 }
+
+
 
