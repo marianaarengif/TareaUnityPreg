@@ -10,7 +10,7 @@ public class leerPregMultiples : MonoBehaviour
     string lineaLeida = "";
     List<PreguntaMultiple> listaPMF;
     List<PreguntaMultiple> listaPMD;
-    List<PreguntaMultiple> preguntasDisponibles;
+    public List<PreguntaMultiple> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     PreguntaMultiple preguntaActual;
 
     string respuestaPM;
@@ -33,7 +33,7 @@ public class leerPregMultiples : MonoBehaviour
         LecturaPreguntasMultiples();
         mostrarPreguntasMultiples();
     }
-    //multiples
+
     public void LecturaPreguntasMultiples()
     {
         try
@@ -111,3 +111,4 @@ public class leerPregMultiples : MonoBehaviour
         mostrarPreguntasMultiples();
     }
 }
+

@@ -9,13 +9,12 @@ public class leerPreguntaAbierta : MonoBehaviour
 {
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
-    List<PreguntaAbierta> preguntasDisponibles;
+    public List<PreguntaAbierta> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     PreguntaAbierta preguntaActual;
 
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
-    //hola
 
     void Start()
     {
@@ -87,6 +86,8 @@ public class leerPreguntaAbierta : MonoBehaviour
         mostrarPreguntasAbiertas();
     }
 }
+
+
 
 
 
