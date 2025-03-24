@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameControllerTODO : MonoBehaviour
+public class GameControllerTODO : MonoBehaviour //Fin
 {
-    [SerializeField]
-    private List<GameObject> listaControllers; // Controladores de preguntas
+    [SerializeField] private List<GameObject> listaControllers; // Controladores de preguntas
     private GameObject controlSelected;
     public GameObject panelAbiertas;
     public GameObject panelMultiples;
     public GameObject panelFV;
     public GameObject panelRonda2;
 
-    private int rondaActual = 1;
+    public int rondaActual = 1;
     private int preguntasRespondidas = 0;
     private const int preguntasPorRonda = 9; // 3 de cada tipo
 
@@ -38,6 +37,7 @@ public class GameControllerTODO : MonoBehaviour
             if (controlSelected.GetComponent<leerPregMultiples>() != null)
             {
                 leerPregMultiples controlMulti = controlSelected.GetComponent<leerPregMultiples>();
+                controlMulti.rondaActual = rondaActual; // Pasar la ronda actual
                 if (controlMulti.preguntasDisponibles.Count > 0)
                 {
                     panelFV.SetActive(false);
@@ -56,6 +56,7 @@ public class GameControllerTODO : MonoBehaviour
             else if (controlSelected.GetComponent<leerPregFV>() != null)
             {
                 leerPregFV controlFV = controlSelected.GetComponent<leerPregFV>();
+                controlFV.rondaActual = rondaActual; // Pasar la ronda actual
                 if (controlFV.preguntasDisponibles.Count > 0)
                 {
                     panelAbiertas.SetActive(false);
@@ -74,6 +75,7 @@ public class GameControllerTODO : MonoBehaviour
             else if (controlSelected.GetComponent<leerPreguntaAbierta>() != null)
             {
                 leerPreguntaAbierta controlAbiertas = controlSelected.GetComponent<leerPreguntaAbierta>();
+                controlAbiertas.rondaActual = rondaActual; // Pasar la ronda actual
                 if (controlAbiertas.preguntasDisponibles.Count > 0)
                 {
                     panelFV.SetActive(false);
@@ -96,7 +98,6 @@ public class GameControllerTODO : MonoBehaviour
             {
                 if (rondaActual == 1)
                 {
-                    rondaActual = 2;
                     preguntasRespondidas = 0;
                     panelRonda2.SetActive(true);
                     Invoke("IniciarRondaDificil", 3); // Esperar 3 segundos antes de iniciar la ronda difícil
@@ -115,13 +116,29 @@ public class GameControllerTODO : MonoBehaviour
 
     void IniciarRondaDificil()
     {
+        rondaActual = 2;
+        foreach  (GameObject control in listaControllers)
+        {
+            if (control.GetComponent<leerPregMultiples>() != null)
+            {
+                leerPregMultiples controlMulti = control.GetComponent<leerPregMultiples>();
+                controlMulti.rondaActual = rondaActual; // Pasar la ronda actual
+                controlMulti.separarDificultad(); // Pasar la ronda actual
+            }
+            else if (control.GetComponent<leerPregFV>() != null)
+            {
+                leerPregFV controlFV = control.GetComponent<leerPregFV>();
+                controlFV.rondaActual = rondaActual; // Pasar la ronda actual
+                controlFV.separarDificultad(); // Pasar la ronda actual
+            }
+            else if (control.GetComponent<leerPreguntaAbierta>() != null)
+            {
+                leerPreguntaAbierta controlAbiertas = control.GetComponent<leerPreguntaAbierta>();
+                controlAbiertas.rondaActual = rondaActual; // Pasar la ronda actual 
+                controlAbiertas.separarDificultad(); // Pasar la ronda actual
+            }
+        }
         panelRonda2.SetActive(false);
         SelectQuestion();
     }
 }
-
-
-
-
-
-

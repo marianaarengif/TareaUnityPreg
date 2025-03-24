@@ -6,14 +6,15 @@ using TMPro;
 using models;
 using Models;
 
-public class leerPregFV : MonoBehaviour
+public class leerPregFV : MonoBehaviour //Fin
 {
     List<preguntasFV> listaPreguntasFaciles;
     List<preguntasFV> listaPreguntasDificiles;
     public List<preguntasFV> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     preguntasFV preguntaActual;
 
-    int rondaActual = 1;
+    public int rondaActual = 1; // Agregar la variable rondaActual
+
     int preguntasRespondidas = 0;
     const int preguntasPorRonda = 3;
 
@@ -27,6 +28,7 @@ public class leerPregFV : MonoBehaviour
         listaPreguntasDificiles = new List<preguntasFV>();
         preguntasDisponibles = new List<preguntasFV>();
         LecturaPreguntasFV();
+        separarDificultad();
         mostrarPreguntasFV();
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
@@ -66,26 +68,43 @@ public class leerPregFV : MonoBehaviour
         }
     }
 
-    public void mostrarPreguntasFV()     {
-        if (preguntasDisponibles.Count == 0)
+    public void separarDificultad()
+    {
+        // Limpiar la lista de preguntas disponibles al inicio de cada ronda
+        preguntasDisponibles.Clear();
+
+        if (rondaActual == 1)
         {
-            if (rondaActual == 1)
-            {
-                preguntasDisponibles.AddRange(listaPreguntasFaciles);
-            }
-            else
-            {
-                preguntasDisponibles.AddRange(listaPreguntasDificiles);
-            }
+            preguntasDisponibles.AddRange(listaPreguntasFaciles); // Preguntas fáciles en la primera ronda
+            Debug.Log("Preguntas fáciles en la primera ronda FV");
         }
+        else if (rondaActual == 2)
+        {
+            preguntasDisponibles.AddRange(listaPreguntasDificiles); // Preguntas difíciles en la segunda ronda
+            Debug.Log("Preguntas difíciles en la segunda ronda FV");
+        }
+        
+    }
 
-        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
-        preguntaActual = preguntasDisponibles[index];
-        preguntasDisponibles.RemoveAt(index);
+    public void mostrarPreguntasFV()
+    {
+        // Seleccionar una pregunta aleatoria
+        if (preguntasDisponibles.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
+            preguntaActual = preguntasDisponibles[index];
+            preguntasDisponibles.RemoveAt(index);
 
-        textPregunta.text = preguntaActual.PreguntaFV;
+            textPregunta.text = preguntaActual.PreguntaFV;
 
-        preguntasRespondidas++;
+            preguntasRespondidas++;
+            panelCorrecto.SetActive(false);
+            panelIncorrecto.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("No hay más preguntas de falso/verdadero disponibles.");
+        }
     }
 
     public void comprobarRespuesta(bool respuestaSeleccionada)
@@ -109,6 +128,3 @@ public class leerPregFV : MonoBehaviour
         mostrarPreguntasFV();
     }
 }
-
-
-

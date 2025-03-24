@@ -1764,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &363522710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2916,7 +2916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.289, y: -94.116}
+  m_AnchoredPosition: {x: 12.28894, y: -94.11603}
   m_SizeDelta: {x: -709.3, y: -267.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819963817
@@ -4454,7 +4454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169716337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6941,6 +6941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7562600cced5b6e40a47f31ef36c14ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rondaActual: 1
   textPregunta: {fileID: 360973751}
   textResp1: {fileID: 1749580060}
   textResp2: {fileID: 415628432}
@@ -7204,6 +7205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e0b509b9219f04f8b523359553b802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rondaActual: 1
   textPregunta: {fileID: 1973668943}
   textRespuesta: {fileID: 280374597}
   panelRespuesta: {fileID: 819963815}
@@ -7934,6 +7936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b134beb608521014a85fccac8ed2dc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rondaActual: 1
   textPregunta: {fileID: 131537871}
   panelCorrecto: {fileID: 1651720359}
   panelIncorrecto: {fileID: 891879824}

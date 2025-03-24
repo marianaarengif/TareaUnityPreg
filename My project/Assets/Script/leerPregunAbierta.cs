@@ -5,12 +5,14 @@ using UnityEngine;
 using Models;
 using TMPro;
 
-public class leerPreguntaAbierta : MonoBehaviour
+public class leerPreguntaAbierta : MonoBehaviour //Fin
 {
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
     public List<PreguntaAbierta> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     PreguntaAbierta preguntaActual;
+
+    public int rondaActual = 1; // Agregar la variable rondaActual
 
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
@@ -23,7 +25,9 @@ public class leerPreguntaAbierta : MonoBehaviour
         preguntasDisponibles = new List<PreguntaAbierta>();
 
         LecturaPreguntasAbiertas();
+        separarDificultad();
         mostrarPreguntasAbiertas();
+        panelRespuesta.SetActive(false);
     }
 
     void LecturaPreguntasAbiertas()
@@ -60,18 +64,40 @@ public class leerPreguntaAbierta : MonoBehaviour
         }
     }
 
+    public void separarDificultad()
+    {
+        // Limpiar la lista de preguntas disponibles al inicio de cada ronda
+        preguntasDisponibles.Clear();
+
+        if (rondaActual == 1)
+        {
+            preguntasDisponibles.AddRange(listaPreguntasFaciles); // Preguntas fáciles en la primera ronda
+            Debug.Log("Preguntas fáciles en la primera ronda Abiertas");
+        }
+        else if (rondaActual == 2)
+        {
+            preguntasDisponibles.AddRange(listaPreguntasDificiles); // Preguntas difíciles en la segunda ronda
+            Debug.Log("Preguntas difíciles en la segunda ronda Abiertas");  
+        }
+    }
+
     public void mostrarPreguntasAbiertas()
     {
-        if (preguntasDisponibles.Count == 0)
+
+        // Seleccionar una pregunta aleatoria
+        if (preguntasDisponibles.Count > 0)
         {
-            preguntasDisponibles.AddRange(listaPreguntasFaciles);
+            int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
+            preguntaActual = preguntasDisponibles[index];
+            preguntasDisponibles.RemoveAt(index);
+
+            textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
+            panelRespuesta.SetActive(false);
         }
-
-        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
-        preguntaActual = preguntasDisponibles[index];
-        preguntasDisponibles.RemoveAt(index);
-
-        textPregunta.text = preguntaActual.PreguntaAbiertaTexto;
+        else
+        {
+            Debug.Log("No hay más preguntas abiertas disponibles.");
+        }
     }
 
     public void mostrarRespuesta()
@@ -86,10 +112,3 @@ public class leerPreguntaAbierta : MonoBehaviour
         mostrarPreguntasAbiertas();
     }
 }
-
-
-
-
-
-
-
