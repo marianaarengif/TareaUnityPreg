@@ -154,4 +154,4 @@ public class GameControllerTODO : MonoBehaviour //Fin
         panelRonda2.SetActive(false);
         SelectQuestion();
     }
-}
+} //carga para los cambios 
