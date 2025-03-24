@@ -10,23 +10,36 @@ public class GameControllerTODO : MonoBehaviour //Fin
     public GameObject panelMultiples;
     public GameObject panelFV;
     public GameObject panelRonda2;
+    public GameObject PanelFacil;
 
     public int rondaActual = 1;
     private int preguntasRespondidas = 0;
+    
     private const int preguntasPorRonda = 9; // 3 de cada tipo
 
     void Start()
     {
+        PanelFacil.SetActive(true);
+        Invoke("apagarpanel", 4);
+
         // Iniciar la primera ronda
         SelectQuestion();
     }
 
     void Update()
     {
+        
     }
 
+     void apagarpanel()
+    {
+        PanelFacil.SetActive(false);
+        
+        SelectQuestion();
+    }
     public void SelectQuestion()
     {
+        
         // Verificar si todavía hay controladores disponibles
         if (listaControllers.Count > 0)
         {
@@ -100,7 +113,7 @@ public class GameControllerTODO : MonoBehaviour //Fin
                 {
                     preguntasRespondidas = 0;
                     panelRonda2.SetActive(true);
-                    Invoke("IniciarRondaDificil", 3); // Esperar 3 segundos antes de iniciar la ronda difícil
+                    Invoke("IniciarRondaDificil", 4);
                 }
                 else
                 {
