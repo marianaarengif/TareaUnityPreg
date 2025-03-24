@@ -13,6 +13,8 @@ public class leerPregMultiples : MonoBehaviour
     public List<PreguntaMultiple> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
     PreguntaMultiple preguntaActual;
 
+    public int rondaActual = 1; // Agregar la variable rondaActual
+
     string respuestaPM;
 
     public TextMeshProUGUI textPregunta;
@@ -31,7 +33,10 @@ public class leerPregMultiples : MonoBehaviour
         preguntasDisponibles = new List<PreguntaMultiple>();
 
         LecturaPreguntasMultiples();
+        separarDificultad();
         mostrarPreguntasMultiples();
+        panelCorrecto.SetActive(false);
+        panelIncorrecto.SetActive(false);
     }
 
     public void LecturaPreguntasMultiples()
@@ -71,23 +76,48 @@ public class leerPregMultiples : MonoBehaviour
         }
     }
 
+    public void separarDificultad()
+    {
+        // Limpiar la lista de preguntas disponibles al inicio de cada ronda
+        preguntasDisponibles.Clear();
+
+        if (rondaActual == 1)
+        {
+            preguntasDisponibles.AddRange(listaPMF); // Preguntas fáciles en la primera ronda
+            Debug.Log("Ronda 1 Múltiples");
+        }
+        else if (rondaActual == 2)
+        {
+            preguntasDisponibles.AddRange(listaPMD); // Preguntas difíciles en la segunda ronda
+            Debug.Log("Ronda 2 Múltiples");
+        }
+    }
+
     public void mostrarPreguntasMultiples()
     {
-        if (preguntasDisponibles.Count == 0)
+
+
+        // Seleccionar una pregunta aleatoria
+        if (preguntasDisponibles.Count > 0)
         {
-            preguntasDisponibles.AddRange(listaPMF);
+            int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
+            preguntaActual = preguntasDisponibles[index];
+            preguntasDisponibles.RemoveAt(index);
+
+            textPregunta.text = preguntaActual.Pregunta;
+            textResp1.text = preguntaActual.Respuesta1;
+            textResp2.text = preguntaActual.Respuesta2;
+            textResp3.text = preguntaActual.Respuesta3;
+            textResp4.text = preguntaActual.Respuesta4;
+            respuestaPM = preguntaActual.RespuestaCorrecta;
+
+            panelCorrecto.SetActive(false);
+            panelIncorrecto.SetActive(false);
         }
-
-        int index = UnityEngine.Random.Range(0, preguntasDisponibles.Count);
-        preguntaActual = preguntasDisponibles[index];
-        preguntasDisponibles.RemoveAt(index);
-
-        textPregunta.text = preguntaActual.Pregunta;
-        textResp1.text = preguntaActual.Respuesta1;
-        textResp2.text = preguntaActual.Respuesta2;
-        textResp3.text = preguntaActual.Respuesta3;
-        textResp4.text = preguntaActual.Respuesta4;
-        respuestaPM = preguntaActual.RespuestaCorrecta;
+        else
+        {
+            Debug.Log("No hay más preguntas múltiples disponibles.");
+        }
     }
 
     public void comprobarRespuesta(TextMeshProUGUI respuestaSeleccionada)
@@ -111,4 +141,3 @@ public class leerPregMultiples : MonoBehaviour
         mostrarPreguntasMultiples();
     }
 }
-
