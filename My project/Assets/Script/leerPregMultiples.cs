@@ -140,4 +140,4 @@ public class leerPregMultiples : MonoBehaviour //Fin
         panelIncorrecto.SetActive(false);
         mostrarPreguntasMultiples();
     }
-}
+} //cambios hoy

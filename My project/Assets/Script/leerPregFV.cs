@@ -127,4 +127,4 @@ public class leerPregFV : MonoBehaviour //Fin
         panelIncorrecto.SetActive(false);
         mostrarPreguntasFV();
     }
-}
+} //guardar cambio 
