@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameControllerTODO : MonoBehaviour
+public class GameControllerTODO : MonoBehaviour //Fin
 {
     [SerializeField] private List<GameObject> listaControllers; // Controladores de preguntas
     private GameObject controlSelected;

@@ -6,7 +6,7 @@ using TMPro;
 using models;
 using Models;
 
-public class leerPregFV : MonoBehaviour
+public class leerPregFV : MonoBehaviour //Fin
 {
     List<preguntasFV> listaPreguntasFaciles;
     List<preguntasFV> listaPreguntasDificiles;

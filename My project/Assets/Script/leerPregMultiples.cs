@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using models;
 
-public class leerPregMultiples : MonoBehaviour
+public class leerPregMultiples : MonoBehaviour //Fin
 {
     string lineaLeida = "";
     List<PreguntaMultiple> listaPMF;

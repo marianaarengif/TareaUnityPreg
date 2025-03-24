@@ -5,7 +5,7 @@ using UnityEngine;
 using Models;
 using TMPro;
 
-public class leerPreguntaAbierta : MonoBehaviour
+public class leerPreguntaAbierta : MonoBehaviour //Fin
 {
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
