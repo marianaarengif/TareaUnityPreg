@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GameControllerTODO : MonoBehaviour //Fin
@@ -11,6 +13,15 @@ public class GameControllerTODO : MonoBehaviour //Fin
     public GameObject panelFV;
     public GameObject panelRonda2;
     public GameObject PanelFacil;
+
+    public GameObject panelResultados;
+    public TextMeshProUGUI textAciertos;
+    public TextMeshProUGUI textErrores;
+
+    // CONTADORES DE RESPUESTAS
+    private int aciertos = 0;
+    private int errores = 0;
+
 
     public int rondaActual = 1;
     private int preguntasRespondidas = 0;
@@ -36,6 +47,7 @@ public class GameControllerTODO : MonoBehaviour //Fin
         PanelFacil.SetActive(false);
         
         SelectQuestion();
+        
     }
     public void SelectQuestion()
     {
@@ -118,6 +130,11 @@ public class GameControllerTODO : MonoBehaviour //Fin
                 else
                 {
                     Debug.Log("Todas las preguntas de todos los tipos se han terminado.");
+
+
+
+                    MostrarResultados();
+                    return;
                 }
             }
         }
@@ -154,5 +171,34 @@ public class GameControllerTODO : MonoBehaviour //Fin
         panelRonda2.SetActive(false);
         SelectQuestion();
     }
+
+    public void RegistrarRespuesta(bool respuestaCorrecta)
+    {
+        if (respuestaCorrecta)
+        {
+            aciertos++;
+        }
+        else
+        {
+            errores++;
+        }
+    }
+
+
+
+    void MostrarResultados()
+    {
+        // Desactivar todos los paneles de preguntas
+        panelAbiertas.SetActive(false);
+        panelMultiples.SetActive(false);
+        panelFV.SetActive(false);
+        panelRonda2.SetActive(false);
+        PanelFacil.SetActive(false);
+        // Activar el panel de resultados
+        panelResultados.SetActive(true);
+        textAciertos.text = "Aciertos: " + aciertos;
+        textErrores.text = "Errores: " + errores;
+    }
 } //carga para los cambios 
 //comentario 
+
