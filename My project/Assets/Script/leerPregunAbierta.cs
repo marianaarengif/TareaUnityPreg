@@ -112,3 +112,4 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         mostrarPreguntasAbiertas();
     }
 } //hola guardar cambio
+//comentario

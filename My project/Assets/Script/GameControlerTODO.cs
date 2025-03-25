@@ -155,3 +155,4 @@ public class GameControllerTODO : MonoBehaviour //Fin
         SelectQuestion();
     }
 } //carga para los cambios 
+//comentario 
