@@ -7,6 +7,7 @@ using TMPro;
 
 public class leerPreguntaAbierta : MonoBehaviour //Fin
 {
+    public GameControllerTODO gameController;
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
     public List<PreguntaAbierta> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
@@ -17,6 +18,8 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
+    public int contadorRespuestasCorrectas = 0;
+    public int contadorRespuestasIncorrectas = 0;
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         separarDificultad();
         mostrarPreguntasAbiertas();
         panelRespuesta.SetActive(false);
+        gameController = GameObject.Find("GameController").GetComponent<GameControllerTODO>();
     }
 
     void LecturaPreguntasAbiertas()
@@ -97,6 +101,25 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         else
         {
             Debug.Log("No hay más preguntas abiertas disponibles.");
+        }
+    }
+
+
+    public void comprobarRespuesta(string respuestaUsuario)
+    {
+        // Compara la respuesta del usuario con la respuesta correcta (ignorando espacios y mayúsculas/minúsculas)
+        bool esCorrecta = respuestaUsuario.Trim().Equals(preguntaActual.Respuesta, System.StringComparison.OrdinalIgnoreCase);
+
+        if (esCorrecta)
+        {
+            // Puedes mostrar un mensaje o activar un panel de respuesta correcta
+            Debug.Log("Respuesta correcta en pregunta abierta");
+            gameController.contadorRespuestasCorrectas += 1;
+        }
+        else
+        {
+            Debug.Log("Respuesta incorrecta en pregunta abierta");
+            gameController.contadorRespuestasIncorrectas += 1;
         }
     }
 

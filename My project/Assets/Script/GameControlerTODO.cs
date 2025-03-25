@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameControllerTODO : MonoBehaviour //Fin
 {
+    public GameControllerTODO gameController;
     [SerializeField] private List<GameObject> listaControllers; // Controladores de preguntas
     private GameObject controlSelected;
     public GameObject panelAbiertas;
@@ -19,8 +20,8 @@ public class GameControllerTODO : MonoBehaviour //Fin
     public TextMeshProUGUI textErrores;
 
     // CONTADORES DE RESPUESTAS
-    private int aciertos = 0;
-    private int errores = 0;
+    public int contadorRespuestasCorrectas = 0;
+    public int contadorRespuestasIncorrectas = 0;
 
 
     public int rondaActual = 1;
@@ -176,13 +177,15 @@ public class GameControllerTODO : MonoBehaviour //Fin
     {
         if (respuestaCorrecta)
         {
-            aciertos++;
+            contadorRespuestasCorrectas+=1;
         }
         else
         {
-            errores++;
+            contadorRespuestasIncorrectas+=1;
         }
     }
+
+    
 
 
 
@@ -196,8 +199,8 @@ public class GameControllerTODO : MonoBehaviour //Fin
         PanelFacil.SetActive(false);
         // Activar el panel de resultados
         panelResultados.SetActive(true);
-        textAciertos.text = "Aciertos: " + aciertos;
-        textErrores.text = "Errores: " + errores;
+        textAciertos.text = "Aciertos: " + contadorRespuestasCorrectas;
+        textErrores.text = "Errores: " + contadorRespuestasIncorrectas;
     }
 } //carga para los cambios 
 //comentario 

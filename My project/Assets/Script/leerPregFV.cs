@@ -8,6 +8,7 @@ using Models;
 
 public class leerPregFV : MonoBehaviour //Fin
 {
+    public GameControllerTODO gameController;
     List<preguntasFV> listaPreguntasFaciles;
     List<preguntasFV> listaPreguntasDificiles;
     public List<preguntasFV> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
@@ -21,6 +22,8 @@ public class leerPregFV : MonoBehaviour //Fin
     public TextMeshProUGUI textPregunta;
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
+    public int contadorRespuestasCorrectas = 0;
+    public int contadorRespuestasIncorrectas = 0;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class leerPregFV : MonoBehaviour //Fin
         mostrarPreguntasFV();
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
+        gameController = GameObject.Find("GameController").GetComponent<GameControllerTODO>();
     }
 
     void LecturaPreguntasFV()
@@ -83,7 +87,7 @@ public class leerPregFV : MonoBehaviour //Fin
             preguntasDisponibles.AddRange(listaPreguntasDificiles); // Preguntas difíciles en la segunda ronda
             Debug.Log("Preguntas difíciles en la segunda ronda FV");
         }
-        
+
     }
 
     public void mostrarPreguntasFV()
@@ -109,23 +113,22 @@ public class leerPregFV : MonoBehaviour //Fin
 
     public void comprobarRespuesta(bool respuestaSeleccionada)
     {
-        if (respuestaSeleccionada == preguntaActual.Respuesta)
+        // Compara la respuesta del usuario con la respuesta correcta de la pregunta
+        bool esCorrecta = (respuestaSeleccionada == preguntaActual.Respuesta);
+
+        if (esCorrecta)
         {
             panelCorrecto.SetActive(true);
             panelIncorrecto.SetActive(false);
+            // Incrementa el contador de respuestas correctas en el GameController
+            gameController.contadorRespuestasCorrectas += 1;
         }
         else
         {
             panelCorrecto.SetActive(false);
             panelIncorrecto.SetActive(true);
+            // Incrementa el contador de respuestas incorrectas en el GameController
+            gameController.contadorRespuestasIncorrectas += 1;
         }
     }
-
-    public void siguientePregunta()
-    {
-        panelCorrecto.SetActive(false);
-        panelIncorrecto.SetActive(false);
-        mostrarPreguntasFV();
-    }
-} //guardar cambio 
-//comentario
+}
