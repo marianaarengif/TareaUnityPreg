@@ -111,4 +111,5 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         panelRespuesta.SetActive(false);
         mostrarPreguntasAbiertas();
     }
-}
+} //hola guardar cambio
+//comentario
