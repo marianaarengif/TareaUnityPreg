@@ -1687,7 +1687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &363522710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2195,6 +2195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c69cba7cb9a294a88124a612a39f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   listaControllers:
   - {fileID: 2069687120}
   - {fileID: 1868737693}
@@ -2207,6 +2208,8 @@ MonoBehaviour:
   panelResultados: {fileID: 1779588085}
   textAciertos: {fileID: 1298658461}
   textErrores: {fileID: 780585816}
+  contadorRespuestasCorrectas: 0
+  contadorRespuestasIncorrectas: 0
   rondaActual: 1
 --- !u!4 &594247088
 Transform:
@@ -7255,6 +7258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7562600cced5b6e40a47f31ef36c14ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   rondaActual: 1
   textPregunta: {fileID: 360973751}
   textResp1: {fileID: 1749580060}
@@ -7374,7 +7378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1779588086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7597,6 +7601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e0b509b9219f04f8b523359553b802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   rondaActual: 1
   textPregunta: {fileID: 1973668943}
   textRespuesta: {fileID: 280374597}
@@ -8328,6 +8333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b134beb608521014a85fccac8ed2dc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   rondaActual: 1
   textPregunta: {fileID: 131537871}
   panelCorrecto: {fileID: 1651720359}

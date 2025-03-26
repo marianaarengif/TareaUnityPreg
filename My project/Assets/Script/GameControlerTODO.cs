@@ -173,17 +173,7 @@ public class GameControllerTODO : MonoBehaviour //Fin
         SelectQuestion();
     }
 
-    public void RegistrarRespuesta(bool respuestaCorrecta)
-    {
-        if (respuestaCorrecta)
-        {
-            contadorRespuestasCorrectas+=1;
-        }
-        else
-        {
-            contadorRespuestasIncorrectas+=1;
-        }
-    }
+    
 
     
 

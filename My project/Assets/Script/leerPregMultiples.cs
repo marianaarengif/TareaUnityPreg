@@ -26,8 +26,7 @@ public class leerPregMultiples : MonoBehaviour //Fin
 
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
-    public int contadorRespuestasCorrectas = 0;
-    public int contadorRespuestasIncorrectas = 0;
+ 
 
     void Start()
     {
@@ -40,7 +39,7 @@ public class leerPregMultiples : MonoBehaviour //Fin
         mostrarPreguntasMultiples();
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
-        gameController = GameObject.Find("GameController").GetComponent<GameControllerTODO>();
+        gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
     }
 
     public void LecturaPreguntasMultiples()

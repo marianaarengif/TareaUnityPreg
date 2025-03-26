@@ -15,11 +15,12 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
 
     public int rondaActual = 1; // Agregar la variable rondaActual
 
+    public GameObject panelResultados;
+
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
-    public int contadorRespuestasCorrectas = 0;
-    public int contadorRespuestasIncorrectas = 0;
+ 
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         separarDificultad();
         mostrarPreguntasAbiertas();
         panelRespuesta.SetActive(false);
-        gameController = GameObject.Find("GameController").GetComponent<GameControllerTODO>();
+        gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
     }
 
     void LecturaPreguntasAbiertas()
@@ -107,20 +108,13 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
 
     public void comprobarRespuesta(string respuestaUsuario)
     {
-        // Compara la respuesta del usuario con la respuesta correcta (ignorando espacios y mayúsculas/minúsculas)
-        bool esCorrecta = respuestaUsuario.Trim().Equals(preguntaActual.Respuesta, System.StringComparison.OrdinalIgnoreCase);
+        // Aquí, en lugar de comparar la respuestaUsuario con preguntaActual.Respuesta,
+        // directamente asumimos que es correcta.
 
-        if (esCorrecta)
-        {
-            // Puedes mostrar un mensaje o activar un panel de respuesta correcta
-            Debug.Log("Respuesta correcta en pregunta abierta");
-            gameController.contadorRespuestasCorrectas += 1;
-        }
-        else
-        {
-            Debug.Log("Respuesta incorrecta en pregunta abierta");
-            gameController.contadorRespuestasIncorrectas += 1;
-        }
+      
+
+        // Luego incrementas el contador de correctas en el GameController
+        gameController.contadorRespuestasCorrectas+=1;
     }
 
     public void mostrarRespuesta()
