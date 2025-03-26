@@ -6,8 +6,9 @@ using TMPro;
 using models;
 using Models;
 
-public class leerPregFV : MonoBehaviour //Fin
+public class leerPregFV : MonoBehaviour
 {
+    public GameControllerTODO gameController;
     List<preguntasFV> listaPreguntasFaciles;
     List<preguntasFV> listaPreguntasDificiles;
     public List<preguntasFV> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
@@ -32,6 +33,8 @@ public class leerPregFV : MonoBehaviour //Fin
         mostrarPreguntasFV();
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
+
+        gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
     }
 
     void LecturaPreguntasFV()
@@ -107,25 +110,34 @@ public class leerPregFV : MonoBehaviour //Fin
         }
     }
 
-    public void comprobarRespuesta(bool respuestaSeleccionada)
-    {
-        if (respuestaSeleccionada == preguntaActual.Respuesta)
-        {
-            panelCorrecto.SetActive(true);
-            panelIncorrecto.SetActive(false);
-        }
-        else
-        {
-            panelCorrecto.SetActive(false);
-            panelIncorrecto.SetActive(true);
-        }
-    }
-
     public void siguientePregunta()
     {
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
         mostrarPreguntasFV();
     }
-} //guardar cambio 
-//comentario
+
+    public void comprobarRespuesta(bool respuestaSeleccionada)
+    {
+        // Compara la respuesta del usuario con la respuesta correcta de la pregunta
+        bool esCorrecta = (respuestaSeleccionada == preguntaActual.Respuesta);
+
+        if (esCorrecta)
+        {
+            panelCorrecto.SetActive(true);
+            panelIncorrecto.SetActive(false);
+            // Incrementa el contador de respuestas correctas en el GameController
+            gameController.contadorRespuestasCorrectas += 1;
+        }
+        else
+        {
+            panelCorrecto.SetActive(false);
+            panelIncorrecto.SetActive(true);
+            // Incrementa el contador de respuestas incorrectas en el GameController
+            gameController.contadorRespuestasIncorrectas += 1;
+        }
+    }
+}
+
+
+//} 
