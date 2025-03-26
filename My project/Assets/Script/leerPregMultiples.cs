@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using models;
 
-public class leerPregMultiples : MonoBehaviour
+public class leerPregMultiples : MonoBehaviour //Fin
 {
     public GameControllerTODO gameController;
     string lineaLeida = "";
@@ -26,6 +26,7 @@ public class leerPregMultiples : MonoBehaviour
 
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
+ 
 
     void Start()
     {
@@ -39,7 +40,6 @@ public class leerPregMultiples : MonoBehaviour
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
         gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
-
     }
 
     public void LecturaPreguntasMultiples()
@@ -123,12 +123,6 @@ public class leerPregMultiples : MonoBehaviour
         }
     }
 
-    public void siguientePregunta()
-    {
-        panelCorrecto.SetActive(false);
-        panelIncorrecto.SetActive(false);
-        mostrarPreguntasMultiples();
-    }
     public void comprobarRespuesta(TextMeshProUGUI respuestaSeleccionada)
     {
         // Compara el texto de la opción seleccionada con la respuesta correcta
@@ -139,14 +133,15 @@ public class leerPregMultiples : MonoBehaviour
             panelCorrecto.SetActive(true);
             panelIncorrecto.SetActive(false);
             // Incrementa el contador de respuestas correctas en el GameController
-            gameController.contadorRespuestasCorrectas += 1;
+            gameController.contadorRespuestasCorrectas+=1;
         }
         else
         {
             panelCorrecto.SetActive(false);
             panelIncorrecto.SetActive(true);
             // Incrementa el contador de respuestas incorrectas en el GameController
-            gameController.contadorRespuestasIncorrectas += 1;
+            gameController.contadorRespuestasIncorrectas+=1;
         }
     }
 }
+//comentario

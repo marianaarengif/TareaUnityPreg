@@ -7,6 +7,7 @@ using TMPro;
 
 public class leerPreguntaAbierta : MonoBehaviour //Fin
 {
+    public GameControllerTODO gameController;
     List<PreguntaAbierta> listaPreguntasFaciles;
     List<PreguntaAbierta> listaPreguntasDificiles;
     public List<PreguntaAbierta> preguntasDisponibles; // Hacerlo público para acceder desde GameControllerTODO
@@ -14,9 +15,12 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
 
     public int rondaActual = 1; // Agregar la variable rondaActual
 
+    public GameObject panelResultados;
+
     public TextMeshProUGUI textPregunta;
     public TextMeshProUGUI textRespuesta;
     public GameObject panelRespuesta;
+ 
 
     void Start()
     {
@@ -28,6 +32,7 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         separarDificultad();
         mostrarPreguntasAbiertas();
         panelRespuesta.SetActive(false);
+        gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
     }
 
     void LecturaPreguntasAbiertas()
@@ -98,6 +103,18 @@ public class leerPreguntaAbierta : MonoBehaviour //Fin
         {
             Debug.Log("No hay más preguntas abiertas disponibles.");
         }
+    }
+
+
+    public void comprobarRespuesta(string respuestaUsuario)
+    {
+        // Aquí, en lugar de comparar la respuestaUsuario con preguntaActual.Respuesta,
+        // directamente asumimos que es correcta.
+
+      
+
+        // Luego incrementas el contador de correctas en el GameController
+        gameController.contadorRespuestasCorrectas+=1;
     }
 
     public void mostrarRespuesta()

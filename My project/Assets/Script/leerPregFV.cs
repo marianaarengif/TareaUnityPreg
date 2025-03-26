@@ -6,7 +6,7 @@ using TMPro;
 using models;
 using Models;
 
-public class leerPregFV : MonoBehaviour
+public class leerPregFV : MonoBehaviour //Fin
 {
     public GameControllerTODO gameController;
     List<preguntasFV> listaPreguntasFaciles;
@@ -23,6 +23,7 @@ public class leerPregFV : MonoBehaviour
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
+
     void Start()
     {
         listaPreguntasFaciles = new List<preguntasFV>();
@@ -33,7 +34,6 @@ public class leerPregFV : MonoBehaviour
         mostrarPreguntasFV();
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
-
         gameController = GameObject.Find("-----GameController-----").GetComponent<GameControllerTODO>();
     }
 
@@ -86,7 +86,7 @@ public class leerPregFV : MonoBehaviour
             preguntasDisponibles.AddRange(listaPreguntasDificiles); // Preguntas difíciles en la segunda ronda
             Debug.Log("Preguntas difíciles en la segunda ronda FV");
         }
-        
+
     }
 
     public void mostrarPreguntasFV()
@@ -110,13 +110,6 @@ public class leerPregFV : MonoBehaviour
         }
     }
 
-    public void siguientePregunta()
-    {
-        panelCorrecto.SetActive(false);
-        panelIncorrecto.SetActive(false);
-        mostrarPreguntasFV();
-    }
-
     public void comprobarRespuesta(bool respuestaSeleccionada)
     {
         // Compara la respuesta del usuario con la respuesta correcta de la pregunta
@@ -138,6 +131,3 @@ public class leerPregFV : MonoBehaviour
         }
     }
 }
-
-
-//} 

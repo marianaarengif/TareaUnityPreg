@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class GameControllerTODO : MonoBehaviour
-
+public class GameControllerTODO : MonoBehaviour //Fin
 {
     public GameControllerTODO gameController;
-    [SerializeField] private List<GameObject> listaControllers;
+    [SerializeField] private List<GameObject> listaControllers; // Controladores de preguntas
     private GameObject controlSelected;
     public GameObject panelAbiertas;
     public GameObject panelMultiples;
@@ -23,10 +23,11 @@ public class GameControllerTODO : MonoBehaviour
     public int contadorRespuestasCorrectas = 0;
     public int contadorRespuestasIncorrectas = 0;
 
+
     public int rondaActual = 1;
     private int preguntasRespondidas = 0;
-
-    private const int preguntasPorRonda = 9;
+    
+    private const int preguntasPorRonda = 9; // 3 de cada tipo
 
     void Start()
     {
@@ -39,18 +40,19 @@ public class GameControllerTODO : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
-    void apagarpanel()
+     void apagarpanel()
     {
         PanelFacil.SetActive(false);
-
+        
         SelectQuestion();
+        
     }
     public void SelectQuestion()
     {
-
+        
         // Verificar si todavía hay controladores disponibles
         if (listaControllers.Count > 0)
         {
@@ -129,21 +131,24 @@ public class GameControllerTODO : MonoBehaviour
                 else
                 {
                     Debug.Log("Todas las preguntas de todos los tipos se han terminado.");
+
+
+
+                    MostrarResultados();
+                    return;
                 }
             }
         }
         else
         {
             Debug.Log("Todas las preguntas de todos los tipos se han terminado.");
-            MostrarResultados();
-
-            return;
         }
     }
+
     void IniciarRondaDificil()
     {
         rondaActual = 2;
-        foreach (GameObject control in listaControllers)
+        foreach  (GameObject control in listaControllers)
         {
             if (control.GetComponent<leerPregMultiples>() != null)
             {
@@ -167,6 +172,13 @@ public class GameControllerTODO : MonoBehaviour
         panelRonda2.SetActive(false);
         SelectQuestion();
     }
+
+    
+
+    
+
+
+
     void MostrarResultados()
     {
         // Desactivar todos los paneles de preguntas
@@ -180,4 +192,6 @@ public class GameControllerTODO : MonoBehaviour
         textAciertos.text = "Aciertos: " + contadorRespuestasCorrectas;
         textErrores.text = "Errores: " + contadorRespuestasIncorrectas;
     }
-}
+} //carga para los cambios 
+//comentario 
+
