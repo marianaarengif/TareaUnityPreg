@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using models;
 
-public class leerPregMultiples : MonoBehaviour //Fin
+public class leerPregMultiples : MonoBehaviour //Fin trabajo
 {
     public GameControllerTODO gameController;
     string lineaLeida = "";

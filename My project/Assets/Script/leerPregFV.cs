@@ -6,7 +6,7 @@ using TMPro;
 using models;
 using Models;
 
-public class leerPregFV : MonoBehaviour //Fin
+public class leerPregFV : MonoBehaviour //Fin trabajo
 {
     public GameControllerTODO gameController;
     List<preguntasFV> listaPreguntasFaciles;

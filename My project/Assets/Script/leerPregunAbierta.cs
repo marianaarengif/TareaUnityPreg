@@ -5,7 +5,7 @@ using UnityEngine;
 using Models;
 using TMPro;
 
-public class leerPreguntaAbierta : MonoBehaviour //Fin
+public class leerPreguntaAbierta : MonoBehaviour //Fin trabajo
 {
     public GameControllerTODO gameController;
     List<PreguntaAbierta> listaPreguntasFaciles;

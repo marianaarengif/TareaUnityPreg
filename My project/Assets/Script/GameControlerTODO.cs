@@ -4,7 +4,7 @@ using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class GameControllerTODO : MonoBehaviour //Fin
+public class GameControllerTODO : MonoBehaviour //Fin trabajo
 {
     public GameControllerTODO gameController;
     [SerializeField] private List<GameObject> listaControllers; // Controladores de preguntas
